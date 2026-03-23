@@ -496,6 +496,7 @@
   }
 
   .section-wash {
+    isolation: isolate;
     box-shadow: none;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
@@ -503,7 +504,7 @@
     border: 0;
     border-radius: 0;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .section-wash:before {
@@ -710,6 +711,10 @@
 }
 
 @layer utilities {
+  .visible {
+    visibility: visible;
+  }
+
   .sr-only {
     clip-path: inset(50%);
     white-space: nowrap;

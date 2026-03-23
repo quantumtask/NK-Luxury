@@ -4,6 +4,11 @@ const mobileMenuButton = document.getElementById("mobile-menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
 const mobileMenuLinks = document.querySelectorAll(".mobile-nav-link");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const isMobileViewport = window.matchMedia("(max-width: 767px)").matches;
+
+const revealAll = (elements) => {
+  elements.forEach((element) => element.classList.add("is-visible"));
+};
 
 const setMobileMenuState = (isOpen) => {
   if (!mobileMenuButton || !mobileMenu || !siteHeader) {
@@ -26,7 +31,30 @@ const syncHeaderState = () => {
 };
 
 if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-  revealTargets.forEach((element) => element.classList.add("is-visible"));
+  revealAll(revealTargets);
+} else if (isMobileViewport) {
+  const revealSections = [...new Set(
+    [...revealTargets]
+      .map((element) => element.closest("section"))
+      .filter(Boolean)
+  )];
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          revealAll(entry.target.querySelectorAll("[data-reveal]"));
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.04,
+      rootMargin: "0px 0px -12% 0px",
+    }
+  );
+
+  revealSections.forEach((section) => sectionObserver.observe(section));
 } else {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -38,8 +66,8 @@ if (prefersReducedMotion || !("IntersectionObserver" in window)) {
       });
     },
     {
-      threshold: 0.18,
-      rootMargin: "0px 0px -40px 0px",
+      threshold: 0.08,
+      rootMargin: "0px 0px -10% 0px",
     }
   );
 
