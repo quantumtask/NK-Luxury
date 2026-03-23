@@ -29,6 +29,30 @@ const observeRevealTargets = (elements, options) => {
   elements.forEach((element) => observer.observe(element));
 };
 
+const observeRevealSections = (elements, options) => {
+  const revealSections = [...new Set(
+    [...elements]
+      .map((element) => element.closest("section"))
+      .filter(Boolean)
+  )];
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        revealAll(entry.target.querySelectorAll("[data-reveal]"));
+        observer.unobserve(entry.target);
+      });
+    },
+    options
+  );
+
+  revealSections.forEach((section) => observer.observe(section));
+};
+
 const setMobileMenuState = (isOpen) => {
   if (!mobileMenuButton || !mobileMenu || !siteHeader) {
     return;
@@ -51,18 +75,18 @@ const syncHeaderState = () => {
 
 if (prefersReducedMotion || !("IntersectionObserver" in window)) {
   revealAll(revealTargets);
+} else if (isMobileViewport) {
+  observeRevealSections(revealTargets, {
+    threshold: 0.01,
+    rootMargin: "0px 0px -30% 0px",
+  });
 } else {
   observeRevealTargets(
     revealTargets,
-    isMobileViewport
-      ? {
-          threshold: 0.18,
-          rootMargin: "0px 0px -6% 0px",
-        }
-      : {
-          threshold: 0.08,
-          rootMargin: "0px 0px -10% 0px",
-        }
+    {
+      threshold: 0.12,
+      rootMargin: "0px 0px -14% 0px",
+    }
   );
 }
 

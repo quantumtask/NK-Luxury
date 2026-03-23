@@ -1098,26 +1098,28 @@
     }
 
     .mobile-whatsapp-dock {
-      left: auto;
-      right: max(1rem, env(safe-area-inset-right, 0px));
       bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
-      white-space: nowrap;
-      letter-spacing: .08em;
-      text-transform: uppercase;
       background: linear-gradient(#37de77fa, #25d366f5);
       border: 1px solid #10241414;
-      width: auto;
-      max-width: calc(100vw - 1.5rem);
-      padding: .95rem 1.15rem;
+      min-width: 0;
+      max-width: none;
+      height: 3.6rem;
+      padding: 0;
+      line-height: 0;
       box-shadow: 0 22px 50px #11311a33, inset 0 1px #ffffff57;
+      left: auto !important;
+      right: max(1rem, env(safe-area-inset-right, 0px)) !important;
+      width: 3.6rem !important;
+    }
+
+    .mobile-whatsapp-dock svg {
+      fill: currentColor;
+      width: 1.55rem;
+      height: 1.55rem;
     }
 
     .mobile-whatsapp-dock:after {
-      content: "Fast replies";
-      letter-spacing: .14em;
-      opacity: .7;
-      margin-left: .7rem;
-      font-size: .68rem;
+      content: none;
     }
   }
 
@@ -2047,10 +2049,6 @@
 
   .whitespace-nowrap {
     white-space: nowrap;
-  }
-
-  .text-\[\#102414\] {
-    color: #102414;
   }
 
   .text-ink-muted {
