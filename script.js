@@ -5,6 +5,7 @@ const mobileMenu = document.getElementById("mobile-menu");
 const mobileMenuLinks = document.querySelectorAll(".mobile-nav-link");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const isMobileViewport = window.matchMedia("(max-width: 767px)").matches;
+const isMobileNavViewport = () => window.innerWidth < 1024;
 
 const revealAll = (elements) => {
   elements.forEach((element) => element.classList.add("is-visible"));
@@ -82,6 +83,72 @@ if (mobileMenuButton && mobileMenu) {
     const isOpen = mobileMenuButton.getAttribute("aria-expanded") === "true";
     setMobileMenuState(!isOpen);
   });
+
+  let touchStartY = 0;
+  let touchStartX = 0;
+  let touchEndY = 0;
+  let touchEndX = 0;
+
+  document.addEventListener(
+    "touchstart",
+    (event) => {
+      if (!isMobileNavViewport()) {
+        return;
+      }
+
+      const touch = event.changedTouches[0];
+
+      touchStartY = touch.clientY;
+      touchStartX = touch.clientX;
+      touchEndY = touch.clientY;
+      touchEndX = touch.clientX;
+    },
+    { passive: true }
+  );
+
+  document.addEventListener(
+    "touchmove",
+    (event) => {
+      if (!isMobileNavViewport()) {
+        return;
+      }
+
+      const touch = event.changedTouches[0];
+
+      touchEndY = touch.clientY;
+      touchEndX = touch.clientX;
+    },
+    { passive: true }
+  );
+
+  document.addEventListener(
+    "touchend",
+    () => {
+      if (!isMobileNavViewport()) {
+        return;
+      }
+
+      const deltaY = touchEndY - touchStartY;
+      const deltaX = touchEndX - touchStartX;
+      const isMostlyVertical = Math.abs(deltaY) > Math.abs(deltaX) * 1.2;
+      const isOpen = mobileMenuButton.getAttribute("aria-expanded") === "true";
+
+      if (!isMostlyVertical) {
+        return;
+      }
+
+      // Open the mobile nav when the user pulls downward from the top edge.
+      if (!isOpen && touchStartY <= 120 && window.scrollY <= 32 && deltaY >= 84) {
+        setMobileMenuState(true);
+      }
+
+      // Allow a quick upward swipe to dismiss the panel once it is open.
+      if (isOpen && deltaY <= -64) {
+        setMobileMenuState(false);
+      }
+    },
+    { passive: true }
+  );
 
   mobileMenuLinks.forEach((link) => {
     link.addEventListener("click", () => setMobileMenuState(false));
