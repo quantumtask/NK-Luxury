@@ -1015,6 +1015,45 @@
       width: 100%;
     }
 
+    #perfumes .perfume-hero {
+      background: linear-gradient(#fffffff0, #f8ede8f0);
+    }
+
+    #perfumes .perfume-hero .perfume-hero-media, #perfumes .perfume-hero .perfume-hero-copy > * {
+      opacity: 0;
+      will-change: opacity, transform;
+      transition: opacity .78s cubic-bezier(.22, 1, .36, 1), transform .78s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    #perfumes .perfume-hero .perfume-hero-media {
+      object-position: center 18%;
+      transform-origin: 100%;
+      min-height: 18.5rem;
+      transform: translateX(2.2rem) scale(1.08);
+      box-shadow: 0 26px 58px #4f343f26;
+    }
+
+    #perfumes .perfume-hero .perfume-hero-copy > * {
+      transform: translateX(-1.7rem);
+    }
+
+    #perfumes .perfume-hero .perfume-hero-title {
+      transition-delay: .11s;
+    }
+
+    #perfumes .perfume-hero .perfume-hero-body {
+      transition-delay: .2s;
+    }
+
+    #perfumes .perfume-hero .perfume-hero-cta {
+      transition-delay: .29s;
+    }
+
+    #perfumes .perfume-hero.is-visible .perfume-hero-media, #perfumes .perfume-hero.is-visible .perfume-hero-copy > * {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
     #perfumes .perfume-grid {
       gap: 1rem;
     }
@@ -1059,14 +1098,17 @@
     }
 
     .mobile-whatsapp-dock {
-      left: 1rem;
-      right: 1rem;
+      left: auto;
+      right: max(1rem, env(safe-area-inset-right, 0px));
       bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+      white-space: nowrap;
       letter-spacing: .08em;
       text-transform: uppercase;
       background: linear-gradient(#37de77fa, #25d366f5);
       border: 1px solid #10241414;
-      padding: .95rem 1.25rem;
+      width: auto;
+      max-width: calc(100vw - 1.5rem);
+      padding: .95rem 1.15rem;
       box-shadow: 0 22px 50px #11311a33, inset 0 1px #ffffff57;
     }
 
@@ -1087,7 +1129,7 @@
       animation-iteration-count: 1 !important;
     }
 
-    [data-reveal] {
+    [data-reveal], #perfumes .perfume-hero .perfume-hero-media, #perfumes .perfume-hero .perfume-hero-copy > * {
       opacity: 1;
       transform: none;
     }
@@ -1161,10 +1203,6 @@
 
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
-  }
-
-  .bottom-4 {
-    bottom: calc(var(--spacing) * 4);
   }
 
   .-left-3 {
@@ -1595,10 +1633,6 @@
     }
   }
 
-  .bg-\[\#25d366\] {
-    background-color: #25d366;
-  }
-
   .bg-\[\#fffaf7\] {
     background-color: #fffaf7;
   }
@@ -1922,8 +1956,8 @@
     font-size: .72rem;
   }
 
-  .text-\[1\.55rem\] {
-    font-size: 1.55rem;
+  .text-\[1\.2rem\] {
+    font-size: 1.2rem;
   }
 
   .text-\[3\.3rem\] {
@@ -1976,11 +2010,6 @@
     font-weight: var(--font-weight-semibold);
   }
 
-  .tracking-\[0\.2em\] {
-    --tw-tracking: .2em;
-    letter-spacing: .2em;
-  }
-
   .tracking-\[0\.3em\] {
     --tw-tracking: .3em;
     letter-spacing: .3em;
@@ -2014,6 +2043,10 @@
   .tracking-\[0\.42em\] {
     --tw-tracking: .42em;
     letter-spacing: .42em;
+  }
+
+  .whitespace-nowrap {
+    white-space: nowrap;
   }
 
   .text-\[\#102414\] {
@@ -2399,6 +2432,10 @@
       line-height: var(--tw-leading, var(--text-sm--line-height));
     }
 
+    .sm\:text-\[1\.55rem\] {
+      font-size: 1.55rem;
+    }
+
     .sm\:text-\[4\.1rem\] {
       font-size: 4.1rem;
     }
@@ -2417,6 +2454,11 @@
 
     .sm\:text-\[5\.4rem\] {
       font-size: 5.4rem;
+    }
+
+    .sm\:tracking-\[0\.28em\] {
+      --tw-tracking: .28em;
+      letter-spacing: .28em;
     }
   }
 

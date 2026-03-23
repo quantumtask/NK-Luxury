@@ -23,15 +23,14 @@
   <header id="site-header" class="fixed inset-x-0 top-0 z-50">
     <div class="mx-auto max-w-7xl px-4 pt-4 sm:px-6">
       <div class="header-shell glass-bloom flex items-center justify-between gap-4 rounded-full border border-white/70 bg-white/70 px-4 py-3 shadow-soft backdrop-blur-xl transition duration-500 sm:px-6">
-        <a href="#home" class="font-display text-[1.55rem] font-semibold uppercase tracking-[0.28em] text-ink-soft transition duration-300 hover:text-rosewood">NK Luxury</a>
+        <a href="#home" class="shrink-0 whitespace-nowrap font-display text-[1.2rem] leading-none font-semibold uppercase tracking-[0.18em] text-ink-soft transition duration-300 hover:text-rosewood sm:text-[1.55rem] sm:tracking-[0.28em]">NK Luxury</a>
         <nav class="hidden items-center gap-8 text-sm font-medium text-rosewood lg:flex" aria-label="Primary navigation">
           <a class="transition duration-300 hover:text-ink-soft" href="#gift-boxes">Gift Boxes</a>
           <a class="transition duration-300 hover:text-ink-soft" href="#perfumes">Perfumes</a>
           <a class="transition duration-300 hover:text-ink-soft" href="#gallery">Gallery</a>
           <a class="transition duration-300 hover:text-ink-soft" href="#contact">Contact</a>
         </nav>
-        <div class="flex items-center gap-2 lg:hidden">
-          <a class="cta-shine inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blush to-blush-deep px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-ink-soft shadow-soft transition duration-500 hover:-translate-y-0.5 hover:shadow-luxe" href="https://wa.me/27823028099?text=Hi%20NK%20Luxury%2C%20I%20would%20like%20to%20place%20an%20order" target="_blank" rel="noreferrer">Order</a>
+        <div class="flex items-center lg:hidden">
           <button id="mobile-menu-button" type="button" class="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#e5d3ca] bg-white/85 text-ink-soft shadow-soft transition duration-500 hover:-translate-y-0.5 hover:shadow-luxe" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
             <span class="sr-only">Toggle navigation menu</span>
             <span class="menu-icon relative h-4 w-5">
@@ -258,15 +257,15 @@
 
     <section id="perfumes" class="section-wash mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24">
       <div class="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
-        <div data-reveal="card-left" class="glass-bloom relative overflow-hidden rounded-[2rem] border border-white/80 bg-white/78 p-4 shadow-luxe backdrop-blur-xl sm:p-6">
+        <div data-reveal="card-left" class="perfume-hero glass-bloom relative overflow-hidden rounded-[2rem] border border-white/80 bg-white/78 p-4 shadow-luxe backdrop-blur-xl sm:p-6">
           <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.9),transparent_35%),linear-gradient(135deg,rgba(255,255,255,0.18),rgba(237,215,205,0.44))]"></div>
           <div class="relative">
-            <img src="assets/perfume-main.webp" alt="Editorial perfume bottle styling for the fragrance section" loading="lazy" class="media-lift h-[22rem] w-full rounded-[1.7rem] object-cover sm:h-[30rem]">
-            <div class="mt-6 max-w-lg">
-              <p class="text-xs font-semibold uppercase tracking-[0.34em] text-rosewood/70">Designer inspired perfumes</p>
-              <h2 class="section-title mt-3 font-display text-[3.35rem] text-ink-soft sm:text-[4.8rem]">50ml fragrances for everyday luxury.</h2>
-              <p class="mt-4 text-base leading-7 text-ink-muted">Elegant scents that layer beautifully into a gift box or stand on their own as a quick, affordable luxury pick.</p>
-              <a class="cta-shine mt-6 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blush to-blush-deep px-6 py-3 text-sm font-semibold text-ink-soft shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-luxe" href="https://wa.me/27823028099?text=Hi%20NK%20Luxury%2C%20please%20help%20me%20choose%20a%20perfume" target="_blank" rel="noreferrer">Chat scents</a>
+            <img src="assets/perfume-main.webp" alt="Editorial perfume bottle styling for the fragrance section" loading="lazy" class="perfume-hero-media media-lift h-[22rem] w-full rounded-[1.7rem] object-cover sm:h-[30rem]">
+            <div class="perfume-hero-copy mt-6 max-w-lg">
+              <p class="perfume-hero-eyebrow text-xs font-semibold uppercase tracking-[0.34em] text-rosewood/70">Designer inspired perfumes</p>
+              <h2 class="perfume-hero-title section-title mt-3 font-display text-[3.35rem] text-ink-soft sm:text-[4.8rem]">50ml fragrances for everyday luxury.</h2>
+              <p class="perfume-hero-body mt-4 text-base leading-7 text-ink-muted">Elegant scents that layer beautifully into a gift box or stand on their own as a quick, affordable luxury pick.</p>
+              <a class="perfume-hero-cta cta-shine mt-6 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blush to-blush-deep px-6 py-3 text-sm font-semibold text-ink-soft shadow-soft transition duration-500 hover:-translate-y-1 hover:shadow-luxe" href="https://wa.me/27823028099?text=Hi%20NK%20Luxury%2C%20please%20help%20me%20choose%20a%20perfume" target="_blank" rel="noreferrer">Chat scents</a>
             </div>
           </div>
         </div>
@@ -453,7 +452,7 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/27823028099?text=Hi%20NK%20Luxury%2C%20I%20want%20to%20place%20an%20order" target="_blank" rel="noreferrer" class="mobile-whatsapp-dock cta-shine fixed bottom-4 right-4 z-50 inline-flex items-center justify-center rounded-full bg-[#25d366] px-5 py-3 text-sm font-semibold text-[#102414] shadow-luxe transition duration-500 hover:-translate-y-1 hover:shadow-luxe lg:hidden" aria-label="Order on WhatsApp">WhatsApp Order</a>
+  <a href="https://wa.me/27823028099?text=Hi%20NK%20Luxury%2C%20I%20want%20to%20place%20an%20order" target="_blank" rel="noreferrer" class="mobile-whatsapp-dock cta-shine fixed z-50 inline-flex items-center justify-center rounded-full text-sm font-semibold text-[#102414] transition duration-500 hover:-translate-y-1 hover:shadow-luxe lg:hidden" aria-label="Order on WhatsApp">WhatsApp Order</a>
 
   <script src="script.js"></script>
 </body>

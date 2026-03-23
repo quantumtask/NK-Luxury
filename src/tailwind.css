@@ -735,6 +735,49 @@
       text-align: center;
     }
 
+    #perfumes .perfume-hero {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 237, 232, 0.94));
+    }
+
+    #perfumes .perfume-hero .perfume-hero-media,
+    #perfumes .perfume-hero .perfume-hero-copy > * {
+      opacity: 0;
+      will-change: opacity, transform;
+      transition:
+        opacity 780ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 780ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    #perfumes .perfume-hero .perfume-hero-media {
+      min-height: 18.5rem;
+      object-position: center 18%;
+      transform: translateX(2.2rem) scale(1.08);
+      transform-origin: right center;
+      box-shadow: 0 26px 58px rgba(79, 52, 63, 0.15);
+    }
+
+    #perfumes .perfume-hero .perfume-hero-copy > * {
+      transform: translateX(-1.7rem);
+    }
+
+    #perfumes .perfume-hero .perfume-hero-title {
+      transition-delay: 110ms;
+    }
+
+    #perfumes .perfume-hero .perfume-hero-body {
+      transition-delay: 200ms;
+    }
+
+    #perfumes .perfume-hero .perfume-hero-cta {
+      transition-delay: 290ms;
+    }
+
+    #perfumes .perfume-hero.is-visible .perfume-hero-media,
+    #perfumes .perfume-hero.is-visible .perfume-hero-copy > * {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
     #perfumes .perfume-grid {
       gap: 1rem;
     }
@@ -781,16 +824,19 @@
     }
 
     .mobile-whatsapp-dock {
-      left: 1rem;
-      right: 1rem;
+      left: auto;
+      right: max(1rem, env(safe-area-inset-right, 0px));
       bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
-      padding: 0.95rem 1.25rem;
+      width: auto;
+      max-width: calc(100vw - 1.5rem);
+      padding: 0.95rem 1.15rem;
       border: 1px solid rgba(16, 36, 20, 0.08);
       background:
         linear-gradient(180deg, rgba(55, 222, 119, 0.98), rgba(37, 211, 102, 0.96));
       box-shadow:
         0 22px 50px rgba(17, 49, 26, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.34);
+      white-space: nowrap;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -813,6 +859,12 @@
     }
 
     [data-reveal] {
+      opacity: 1;
+      transform: none;
+    }
+
+    #perfumes .perfume-hero .perfume-hero-media,
+    #perfumes .perfume-hero .perfume-hero-copy > * {
       opacity: 1;
       transform: none;
     }

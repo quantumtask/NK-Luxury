@@ -11,6 +11,24 @@ const revealAll = (elements) => {
   elements.forEach((element) => element.classList.add("is-visible"));
 };
 
+const observeRevealTargets = (elements, options) => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    options
+  );
+
+  elements.forEach((element) => observer.observe(element));
+};
+
 const setMobileMenuState = (isOpen) => {
   if (!mobileMenuButton || !mobileMenu || !siteHeader) {
     return;
@@ -33,46 +51,19 @@ const syncHeaderState = () => {
 
 if (prefersReducedMotion || !("IntersectionObserver" in window)) {
   revealAll(revealTargets);
-} else if (isMobileViewport) {
-  const revealSections = [...new Set(
-    [...revealTargets]
-      .map((element) => element.closest("section"))
-      .filter(Boolean)
-  )];
-
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          revealAll(entry.target.querySelectorAll("[data-reveal]"));
-          sectionObserver.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.04,
-      rootMargin: "0px 0px -12% 0px",
-    }
-  );
-
-  revealSections.forEach((section) => sectionObserver.observe(section));
 } else {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+  observeRevealTargets(
+    revealTargets,
+    isMobileViewport
+      ? {
+          threshold: 0.18,
+          rootMargin: "0px 0px -6% 0px",
         }
-      });
-    },
-    {
-      threshold: 0.08,
-      rootMargin: "0px 0px -10% 0px",
-    }
+      : {
+          threshold: 0.08,
+          rootMargin: "0px 0px -10% 0px",
+        }
   );
-
-  revealTargets.forEach((element) => observer.observe(element));
 }
 
 syncHeaderState();
