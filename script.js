@@ -3,7 +3,6 @@ const siteHeader = document.getElementById("site-header");
 const mobileMenuButton = document.getElementById("mobile-menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
 const mobileMenuLinks = document.querySelectorAll(".mobile-nav-link");
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const isMobileViewport = window.matchMedia("(max-width: 767px)").matches;
 const isMobileNavViewport = () => window.innerWidth < 1024;
 
@@ -73,7 +72,7 @@ const syncHeaderState = () => {
   siteHeader.classList.toggle("is-scrolled", window.scrollY > 12);
 };
 
-if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+if (!("IntersectionObserver" in window)) {
   revealAll(revealTargets);
 } else if (isMobileViewport) {
   observeRevealSections(revealTargets, {
