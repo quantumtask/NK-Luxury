@@ -88,10 +88,6 @@
     --text-3xl--line-height: calc(2.25 / 1.875);
     --text-4xl: 2.25rem;
     --text-4xl--line-height: calc(2.5 / 2.25);
-    --text-5xl: 3rem;
-    --text-5xl--line-height: 1;
-    --text-6xl: 3.75rem;
-    --text-6xl--line-height: 1;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --leading-tight: 1.25;
@@ -500,27 +496,20 @@
   }
 
   .section-wash {
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-    background-color: #0000;
-    background-image: linear-gradient(#ffffffc7, #fff9f694), url("./theme.jpeg");
-    background-position: center;
-    background-repeat: repeat, repeat;
-    background-size: cover;
-    background-attachment: scroll, scroll;
-    background-origin: padding-box, padding-box;
-    background-clip: border-box, border-box;
-    border: 1px solid #ffffffc7;
-    border-radius: 2rem;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: none;
+    border: 0;
+    border-radius: 0;
     position: relative;
-    overflow: hidden;
-    box-shadow: 0 28px 80px #593a4614;
+    overflow: visible;
   }
 
   .section-wash:before {
     content: "";
     pointer-events: none;
-    background: radial-gradient(circle at 0 0, #ffe3eb57, #0000 28%), linear-gradient(135deg, #ffffff57, #0000 45%);
+    background: radial-gradient(circle at 0 0, #ffe3eb29, #0000 26%), radial-gradient(circle at 100% 100%, #f4d3dd1f, #0000 30%);
     position: absolute;
     inset: 0;
   }
